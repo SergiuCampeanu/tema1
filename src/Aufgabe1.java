@@ -87,6 +87,7 @@ public class Aufgabe1 {
                 max = grade;
             }
         }
+
         return max;
     }
 }
