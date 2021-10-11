@@ -80,11 +80,11 @@ public class Aufgabe1 {
     {
         ArrayList<Integer> grades = Rounded(arr);
         int max = 0;
-        for(int i=0; i<grades.size(); i++)
+        for (Integer grade : grades)
         {
-            if(grades.get(i) > max)
+            if (grade > max)
             {
-                max = grades.get(i);
+                max = grade;
             }
         }
         return max;
