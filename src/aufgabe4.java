@@ -13,52 +13,52 @@ public class aufgabe4 {
         System.out.println(" "); //new line
 
         System.out.println("Cheapest Keyboard: " + CheapKeyBoard(KeyBoardPrice));
-        System.out.println("The most expensive Keyboard: " + ExpKeyBoard(KeyBoardPrice)+", and the most expensive USB Cable: " + ExpUSBCable(USBCablePrice));
-        System.out.println(" ");
+        System.out.println("The most expensive Keyboard: " + ExpKeyBoard(KeyBoardPrice)+
+                ", and the most expensive USB Cable: " + ExpUSBCable(USBCablePrice)); //returnam doua functii
+        System.out.println(" "); //new line
 
         System.out.print("Enter Markus's Budget: ");
-        int budget = scan.nextInt();
+        int budget = scan.nextInt(); //citim bugetul de la tastatura
         System.out.println("The most expensive USB Cable that Markus can afford is: " + MarkusUSBEXP(USBCablePrice, budget));
         System.out.println("The best set up that Markus can afford is: " + BestSetUP(KeyBoardPrice, USBCablePrice, budget));
 
     }
 
-
     private static int CheapKeyBoard(int[] arr) {
-        int ChKB = arr[0];
-        for (int x : arr) {
+        int ChKB = arr[0]; //cream un int care este primul element din arr
+        for (int x : arr) { //cautam cel mai mic produs din arr
             if (x < ChKB) {
                 ChKB = x;
             }
         }
-        return ChKB;
+        return ChKB;//returnam cel mai mic
     }
 
     private static int ExpKeyBoard(int[] arr) {
-        int exp = arr[0];
-        for (int x : arr) {
+        int exp = arr[0]; //cream un int care este primul element din arr
+        for (int x : arr) {//cautam cel mai mare produs din arr
             if (x > exp) {
                 exp = x;
             }
         }
-        return exp;
+        return exp;//returnam cel mai mare
     }
 
     private static int ExpUSBCable(int[] arr) {
-        int exp = arr[0];
-        for (int x : arr) {
+        int exp = arr[0];//cream un int care este primul element din arr
+        for (int x : arr) {//cautam cel mai mare produs din arr
             if (x > exp) {
                 exp = x;
             }
         }
-        return exp;
+        return exp;//returnam cel mai mare
     }
 
     private static int MarkusUSBEXP(int[] arr, int budget) {
-        int exp = arr[0];
+        int exp = arr[0];//cream un int care este primul element din arr
         boolean found = false;
         for (int x : arr) {
-            if(x<budget)
+            if(x<=budget) //verificam daca x este mai mic sau egal decat bugetul
             {
                 if (x > exp) {
                     exp = x;
@@ -68,7 +68,7 @@ public class aufgabe4 {
         }
         if (!found) //found == false
         {
-            return -1;
+            return -1; //daca nu a gasit returnam -1
         }
         else
         {
@@ -79,7 +79,7 @@ public class aufgabe4 {
     private static Object BestSetUP(int[] arr1, int[] arr2, int budget)
     {
         int sum = 0;
-        ArrayList<Integer> bsp = new ArrayList<Integer>();
+        ArrayList<Integer> bsp = new ArrayList<Integer>();  //cream un arraylist de integer
         boolean found = false;
         int expK = arr1[0];
         int expU = arr2[0];
@@ -87,14 +87,14 @@ public class aufgabe4 {
         {
             for (int j : arr2)
             {
-                if (i + j <= budget)
+                if (i + j <= budget) //verificam daca suma produsului este mai mic sau egal decat bugetul
                 {
-                    if (i + j > sum)
+                    if (i + j > sum) //verificam sa fie mai mare decat suma
                     {
                         sum = i + j;
                         found = true;
-                        bsp.clear();
-                        bsp.add(i);
+                        bsp.clear(); //stergem arraylistul
+                        bsp.add(i); //adaugam noile sugestii
                         bsp.add(j);
                     }
                 }
@@ -102,7 +102,7 @@ public class aufgabe4 {
         }
         if (!found) //found == false
         {
-            return -1;
+            return -1; //daca  nu a gasit returnam -1
         }
         else
         {
