@@ -7,9 +7,9 @@ public class Aufgabe1 {
         int[] grade = {26, 87, 48, 25, 94, 3, 100, 51, 75};
 
         System.out.println("Grades that failed: " + smallGrade(grade));
-        System.out.println("The arithmetic mean is: " + Arithmetic(grade));
-        System.out.println("Grades rounded: " + Rounded(grade));
-        System.out.println("The best grade rounded: " + MaxRoundedGrade(grade));
+        System.out.println("The arithmetic mean is: " + arithmetic(grade));
+        System.out.println("Grades rounded: " + rounded(grade));
+        System.out.println("The best grade rounded: " + maxRoundedGrade(grade));
     }
 
     private static ArrayList<Integer> smallGrade(int[] arr)
@@ -27,7 +27,7 @@ public class Aufgabe1 {
         return NotPass; //returnam arraylistul
     }
 
-    private static float Arithmetic(int[] arr)
+    private static float arithmetic(int[] arr)
     {
         float total = 0;
         for (int x : arr)
@@ -37,7 +37,7 @@ public class Aufgabe1 {
         return total / arr.length; //returnam rezultatul impartit la nr de note
     }
 
-    private static ArrayList<Integer> Rounded(int[] arr)
+    private static ArrayList<Integer> rounded(int[] arr) //de modificat
     {
         ArrayList<Integer> roundedGrade = new ArrayList<Integer>(); //cream un arraylist
         for (int x : arr)
@@ -76,9 +76,9 @@ public class Aufgabe1 {
     }
 
 
-    private static int MaxRoundedGrade(int[] arr)
+    private static int maxRoundedGrade(int[] arr)
     {
-        ArrayList<Integer> grades = Rounded(arr); //cream un arraylist cu notele rotunjite
+        ArrayList<Integer> grades = rounded(arr); //cream un arraylist cu notele rotunjite
         int max = 0; //cream un int
         for (Integer grade : grades) //cautam nota cea mai mare
         {

@@ -12,19 +12,19 @@ public class aufgabe4 {
         System.out.println("USB Cable's Price" + Arrays.toString(USBCablePrice));
         System.out.println(" "); //new line
 
-        System.out.println("Cheapest Keyboard: " + CheapKeyBoard(KeyBoardPrice));
-        System.out.println("The most expensive Keyboard: " + ExpKeyBoard(KeyBoardPrice)+
-                ", and the most expensive USB Cable: " + ExpUSBCable(USBCablePrice)); //returnam doua functii
+        System.out.println("Cheapest Keyboard: " + cheapKeyBoard(KeyBoardPrice));
+        System.out.println("The most expensive Keyboard: " + expKeyBoard(KeyBoardPrice)+
+                ", and the most expensive USB Cable: " + expUSBCable(USBCablePrice)); //returnam doua functii
         System.out.println(" "); //new line
 
         System.out.print("Enter Markus's Budget: ");
         int budget = scan.nextInt(); //citim bugetul de la tastatura
-        System.out.println("The most expensive USB Cable that Markus can afford is: " + MarkusUSBEXP(USBCablePrice, budget));
-        System.out.println("The best set up that Markus can afford is: " + BestSetUP(KeyBoardPrice, USBCablePrice, budget));
+        System.out.println("The most expensive USB Cable that Markus can afford is: " + markusUSBEXP(USBCablePrice, budget));
+        System.out.println("The best set up that Markus can afford is: " + bestSetUP(KeyBoardPrice, USBCablePrice, budget));
 
     }
 
-    private static int CheapKeyBoard(int[] arr) {
+    private static int cheapKeyBoard(int[] arr) {
         int ChKB = arr[0]; //cream un int care este primul element din arr
         for (int x : arr) { //cautam cel mai mic produs din arr
             if (x < ChKB) {
@@ -34,7 +34,7 @@ public class aufgabe4 {
         return ChKB;//returnam cel mai mic
     }
 
-    private static int ExpKeyBoard(int[] arr) {
+    private static int expKeyBoard(int[] arr) {
         int exp = arr[0]; //cream un int care este primul element din arr
         for (int x : arr) {//cautam cel mai mare produs din arr
             if (x > exp) {
@@ -44,7 +44,7 @@ public class aufgabe4 {
         return exp;//returnam cel mai mare
     }
 
-    private static int ExpUSBCable(int[] arr) {
+    private static int expUSBCable(int[] arr) {
         int exp = arr[0];//cream un int care este primul element din arr
         for (int x : arr) {//cautam cel mai mare produs din arr
             if (x > exp) {
@@ -54,16 +54,14 @@ public class aufgabe4 {
         return exp;//returnam cel mai mare
     }
 
-    private static int MarkusUSBEXP(int[] arr, int budget) {
-        int exp = arr[0];//cream un int care este primul element din arr
+    private static int markusUSBEXP(int[] arr, int budget) {
+        int exp = 0;//cream un int care este primul element din arr
         boolean found = false;
         for (int x : arr) {
-            if(x<=budget) //verificam daca x este mai mic sau egal decat bugetul
+            if(x<=budget && x >= exp) //verificam daca x este mai mic sau egal decat bugetul
             {
-                if (x > exp) {
-                    exp = x;
-                    found = true;
-                }
+                exp = x;
+                found = true;
             }
         }
         if (!found) //found == false
@@ -76,7 +74,7 @@ public class aufgabe4 {
         }
     }
 
-    private static Object BestSetUP(int[] arr1, int[] arr2, int budget)
+    private static Object bestSetUP(int[] arr1, int[] arr2, int budget)
     {
         int sum = 0;
         ArrayList<Integer> bsp = new ArrayList<Integer>();  //cream un arraylist de integer
@@ -87,16 +85,13 @@ public class aufgabe4 {
         {
             for (int j : arr2)
             {
-                if (i + j <= budget) //verificam daca suma produsului este mai mic sau egal decat bugetul
+                if (i + j <= budget && i+j>sum) //verificam daca suma produsului este mai mic sau egal decat bugetul si verificam sa fie mai mare decat suma
                 {
-                    if (i + j > sum) //verificam sa fie mai mare decat suma
-                    {
-                        sum = i + j;
-                        found = true;
-                        bsp.clear(); //stergem arraylistul
-                        bsp.add(i); //adaugam noile sugestii
-                        bsp.add(j);
-                    }
+                    sum = i + j;
+                    found = true;
+                    bsp.clear(); //stergem arraylistul
+                    bsp.add(i); //adaugam noile sugestii
+                    bsp.add(j);
                 }
             }
         }
